@@ -1,0 +1,20 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    
+    padding:'10px';
+    min-Height:'70vh';
+    min-Width:'65vw';
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    background-color: rgba(245, 245, 245, 0.1);
+    backdrop-filter: blur(3px);
+    overflow: hidden; 
+   
+}
+

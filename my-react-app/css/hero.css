@@ -1,0 +1,57 @@
+
+@import "tailwindcss";
+
+
+
+
+input{
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-color: black;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+
+
+.form{
+     
+    background-color: rgba(245, 245, 245, 0.1);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height:65.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    min-width:110%;
+
+}
+
+
+.card{
+    
+    background-color: rgba(245, 245, 245, 0.1);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-size: 200px;
+    z-index: 100;
+    position: relative;
+    min-block-size: 500px;
+    display: flex;
+    align-items: center;
+    margin:auto;
+    flex-wrap: wrap;
+}
+
+
+
+.hero{
+    display: flex;
+    align-items: center;
+    width: 2000px;
+
+}
+
