@@ -13,6 +13,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import { Context } from "../src/main";
+import { useEffect, useContext, createContext, useState } from "react";
 
 const Header = () => {
   //sidebar functionality
@@ -51,7 +53,7 @@ const Header = () => {
   );
 
   // Dummy authentication state (replace with real auth logic)
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleProfileClick = () => {

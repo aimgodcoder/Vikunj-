@@ -1,7 +1,45 @@
 import React from "react";
 import "../css/login.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useEffect, useContext, createContext, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Context } from "../src/main";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+    const navigateTo = useNavigate();
+
+    const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+      await axios
+        .post(
+          "http://localhost:4000/api/v1/user/login",
+          { email, password },
+          {
+            withCredentials: true,
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((res) => {
+          toast.success(res.data.message);
+          setIsAuthenticated(true);
+          // add token to local storage or context if needed
+          localStorage.setItem("token", res.data.token);
+          console.log(localStorage.getItem("token"));
+          navigateTo("/");
+          setEmail("");
+          setPassword("");
+        });
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+
   return (
     <div className="login">
       <div className="flex justify-center items-center min-h-screen">
@@ -27,12 +65,13 @@ const Login = () => {
                 change
               </a>
             </p>
-            <form className="flex flex-col items-center w-full">
+            <form className="flex flex-col items-center w-full" onSubmit={handleLogin}>
               <div className="mb-4 w-full flex justify-center">
                 <input
                   type="text"
                   placeholder="Username or Email Address"
-                  defaultValue="e.g. fredrick"
+                  defaultValue=""
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded text-center"
                 />
               </div>
@@ -40,7 +79,8 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  defaultValue="e.g. *******"
+                  defaultValue=""
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded text-center"
                 />
                 <a
@@ -63,7 +103,7 @@ const Login = () => {
                 LOGIN
               </button>
               <p className="text-sm text-blue-400 mt-4 text-center">
-                Don't have an account yet?{" "}
+                Don't have an account yet ?{" "}
                 <a href="/register" className="underline">
                   Create account
                 </a>

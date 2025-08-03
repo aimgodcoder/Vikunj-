@@ -17,12 +17,18 @@ function App() {
 
   useEffect(() => {
     const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setIsAuthenticated(false);
+        setUser({});
+        return;
+      }
       try {
         const response = await axios.get(
           "http://localhost:4000/api/v1/user/profile",
           {
             withCredentials: true,
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           }
         );
         setUser(response.data.user);
