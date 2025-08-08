@@ -32,7 +32,7 @@ return (
         </div>
 
         <div className='card'>
-            <p>hshdbbaskdiabsdbajksbdjbasfbiabsdfionbasifblianbskajksfbiabsfiobaIOFBIOABSIOBASOFBIOASFBIOBASFIOBAISOFBF</p>
+          
             <button onClick={navigatetoLogin}>Login</button>
         </div>
     </div>

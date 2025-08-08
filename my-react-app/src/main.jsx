@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import { createContext,useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -14,7 +14,9 @@ const AppWrapper = () => {
   const [user, setUser] = useState();
   return (
     <Context.Provider value={{ isAuthenticated, setIsAuthenticated,user, setUser }}>
+      <BrowserRouter>
       <App/>
+      </BrowserRouter>
     </Context.Provider>
   );
 };
